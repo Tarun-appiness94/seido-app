@@ -53,9 +53,9 @@ const FilterSection = () => {
       <p className="bg-white p-3 rounded-[6px] rounded-b-none text-[#08445C] text-xl font-bold">
         Filters
       </p>
-      <div className="flex flex-col gap-2 bg-white h-[calc(100vh_-_170px)]">
+      <div className="flex flex-col gap-2 bg-white md:h-[calc(100vh_-_170px)]">
       <ScrollArea className=" ">
-        <div className="flex flex-col gap-[10px] p-1 overflow-y-scroll ">
+        <div className="flex flex-col gap-[10px] overflow-y-scroll p-4 md:p-1 ">
           {/* <FilterDropdown
             name="Contact Name"
             options={contactData}
@@ -126,7 +126,7 @@ const FilterSection = () => {
           />
         </div>
       </ScrollArea>
-        <div className="flex gap-2 w-full justify-between p-1">
+        <div className="flex gap-2 w-full md:justify-between justify-center p-4 pt-0 md:p-1 md:pb-4">
           <Button
             variant="outline"
             className="bg-white border-[#08445C] text-[#08445C] rounded-xl text-xs"

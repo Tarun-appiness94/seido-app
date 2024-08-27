@@ -15,7 +15,7 @@ const Candidates = () => {
 
   return (
     <div className="bg-[#E6EDF1] w-screen">
-      <div className="bg-[#E6EDF1] grid md:grid-cols-[186px_auto] md:grid-rows-[40px_1fr] max-w-[1280px] m-auto h-auto pt-10 p-8  gap-10">
+      <div className="bg-[#E6EDF1] flex flex-col gap-6 p-4 md:grid md:grid-cols-[186px_auto] md:grid-rows-[40px_1fr] max-w-[1280px] m-auto h-auto md:pt-10 md:p-8  md:gap-10">
         <Header />
         <FilterSection />
         <section className="w-full overflow-x-auto">

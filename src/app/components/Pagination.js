@@ -28,7 +28,7 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex items-center justify-between p-4 bg-white rounded-lg rounded-t-none">
+    <div className="flex md:flex-row flex-col gap-2 items-center justify-between p-4 bg-white rounded-lg rounded-t-none">
       <div className="flex items-center gap-1">
         <label htmlFor="entries" className="text-sm">
           Show

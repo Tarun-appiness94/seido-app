@@ -3,7 +3,7 @@ import Image from "next/image";
 const HeroBanner = () => {
   return (
     <Image
-      className="h-screen w-full object-cover"
+      className="h-screen w-full object-fill"
       src="/banner-img.webp"
       width={624}
       height={832}

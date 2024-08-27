@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const Header = () => {
   return (
-    <header className="col-span-2 flex items-center justify-between h-10">
+    <header className="md:col-span-2 flex md:flex-row flex-col gap-4 md:gap-0 md:items-center justify-between md:h-10">
     <div className="flex items-center justify-start gap-8">
       <Image
         className="inline-block"
@@ -20,7 +20,7 @@ const Header = () => {
         <CustomSearchInput />
       </div>
     </div>
-    <div className="flex gap-8 items-center justify-end">
+    <div className="flex gap-8 items-center md:justify-end">
       <span className="text-[20px]">Good morning, Mukesh!</span>
       <CustomAvatar
         src="/user-img.webp"
