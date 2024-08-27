@@ -5,40 +5,32 @@ import React from "react";
 import useCandidateStore from "@/store/store";
 import FilterDropdown from "./FilterDropdown";
 import {
-  cities,
-  companies,
-  countries,
-  industries,
-  jobPositions,
-  pincodes,
-  salaries,
-  states,
-  tags,
+  cityData,
+  companyData,
+  countryData,
+  industryData,
+  jobPositionData,
+  pincodeData,
+  salaryData,
+  stateData,
+  tagData,
 } from "../utils/data";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 const FilterSection = () => {
   const {
+    AllFiltersObject,
     applyFilters,
     resetFilters,
-    selectedCities,
-    setSelectedCities,
-    selectedStates,
-    setSelectedStates,
-    selectedPinCode,
-    setSelectedPinCode,
-    selectedCountry,
+    setSelectedCity,
+    setSelectedState,
+    setSelectedPincode,
     setSelectedCountry,
-    selectedSalary,
     setSelectedSalary,
-    selectedCompanyName,
-    setSelectedCompanyName,
-    selectedJobPosition,
+    setSelectedCompany,
     setSelectedJobPosition,
-    selectedIndustry,
     setSelectedIndustry,
-    selectedTags,
-    setSelectedTags,
+    setSelectedTag,
   } = useCandidateStore();
 
   const handleApply = () => {
@@ -59,70 +51,73 @@ const FilterSection = () => {
           {/* <FilterDropdown
             name="Contact Name"
             options={contactData}
-            placeholder="Select contact..."
+            selectedOptions={AllFiltersObject.ContactName}
+            placeholder="Select ContactName..."
+            onChange={setSelectedContactName}
+
           /> */}
           <FilterDropdown
             name="Pin Code"
-            options={pincodes}
-            selectedOptions={selectedPinCode}
+            options={pincodeData}
+            selectedOptions={AllFiltersObject.Pincode}
             placeholder="Select pincode..."
-            onChange={setSelectedPinCode}
+            onChange={setSelectedPincode}
           />
           <FilterDropdown
             name="City"
-            options={cities}
+            options={cityData}
             placeholder="Select city..."
-            selectedOptions={selectedCities}
-            onChange={setSelectedCities}
+            selectedOptions={AllFiltersObject.City}
+            onChange={setSelectedCity}
           />
           <FilterDropdown
             name="State"
-            options={states}
+            options={stateData}
             placeholder="Select state..."
-            selectedOptions={selectedStates}
-            onChange={setSelectedStates}
+            selectedOptions={AllFiltersObject.State}
+            onChange={setSelectedState}
           />
           <FilterDropdown
             name="Country"
-            options={countries}
-            selectedOptions={selectedCountry}
+            options={countryData}
+            selectedOptions={AllFiltersObject.Country}
             placeholder="Select country..."
             onChange={setSelectedCountry}
           />
           <FilterDropdown
             name="Salary"
-            options={salaries}
-            selectedOptions={selectedSalary}
+            options={salaryData}
+            selectedOptions={AllFiltersObject.Salary}
             placeholder="Select salary range..."
             onChange={setSelectedSalary}
           />
           <FilterDropdown
             name="Company Name"
-            options={companies}
-            selectedOptions={selectedCompanyName}
+            options={companyData}
+            selectedOptions={AllFiltersObject.Company}
             placeholder="Select company..."
-            onChange={setSelectedCompanyName}
+            onChange={setSelectedCompany}
           />
           <FilterDropdown
             name="Job Position"
-            options={jobPositions}
-            selectedOptions={selectedJobPosition}
+            options={jobPositionData}
+            selectedOptions={AllFiltersObject.JobPosition}
             placeholder="Select job position..."
             onChange={setSelectedJobPosition}
           />
           <FilterDropdown
             name="Industry"
-            options={industries}
-            selectedOptions={selectedIndustry}
+            options={industryData}
+            selectedOptions={AllFiltersObject.Industry}
             placeholder="Select industry..."
             onChange={setSelectedIndustry}
           />
           <FilterDropdown
             name="Tags"
-            options={tags}
-            selectedOptions={selectedTags}
+            options={tagData}
+            selectedOptions={AllFiltersObject.Tag}
             placeholder="Select tags..."
-            onChange={setSelectedTags}
+            onChange={setSelectedTag}
           />
         </div>
       </ScrollArea>

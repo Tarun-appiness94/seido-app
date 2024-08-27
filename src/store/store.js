@@ -17,29 +17,16 @@ const useCandidateStore = create((set) => ({
     Industry: [],
     Tag: [],
   },
-
-  // selected options ==================
-  selectedCities: [],
-  selectedStates: [],
-  // selectedContactName: [],
-  selectedPinCode: [],
-  selectedCountry: [],
-  selectedSalary: [],
-  selectedCompanyName: [],
-  selectedJobPosition: [],
-  selectedIndustry: [],
-  selectedTags: [],
-  setSelectedCities: (selectedOptions) =>
+  setSelectedCity: (selectedOptions) =>
     set((state) => ({
-      selectedCities: selectedOptions,
+      // selectedCities: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
         City: selectedOptions,
       },
     })),
-  setSelectedStates: (selectedOptions) =>
+  setSelectedState: (selectedOptions) =>
     set((state) => ({
-      selectedStates: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
         State: selectedOptions,
@@ -47,23 +34,20 @@ const useCandidateStore = create((set) => ({
     })),
   // setSelectedContactName: (selectedOptions) =>
   //   set((state) => ({
-  //     selectedContactName: selectedOptions,
   //     AllFiltersObject: {
   //       ...state.AllFiltersObject,
   //       ContactName: selectedOptions,
   //     },
   //   })),
-  setSelectedPinCode: (selectedOptions) =>
+  setSelectedPincode: (selectedOptions) =>
     set((state) => ({
-      selectedPinCode: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
-        PinCode: selectedOptions,
+        Pincode: selectedOptions,
       },
     })),
   setSelectedCountry: (selectedOptions) =>
     set((state) => ({
-      selectedCountry: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
         Country: selectedOptions,
@@ -71,15 +55,13 @@ const useCandidateStore = create((set) => ({
     })),
   setSelectedSalary: (selectedOptions) =>
     set((state) => ({
-      selectedSalary: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
         Salary: selectedOptions,
       },
     })),
-  setSelectedCompanyName: (selectedOptions) =>
+  setSelectedCompany: (selectedOptions) =>
     set((state) => ({
-      selectedCompanyName: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
         Company: selectedOptions,
@@ -87,7 +69,6 @@ const useCandidateStore = create((set) => ({
     })),
   setSelectedJobPosition: (selectedOptions) =>
     set((state) => ({
-      selectedJobPosition: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
         JobPosition: selectedOptions,
@@ -95,82 +76,64 @@ const useCandidateStore = create((set) => ({
     })),
   setSelectedIndustry: (selectedOptions) =>
     set((state) => ({
-      selectedIndustry: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
         Industry: selectedOptions,
       },
     })),
-  setSelectedTags: (selectedOptions) => 
+  setSelectedTag: (selectedOptions) =>
     set((state) => ({
-      selectedTags: selectedOptions,
       AllFiltersObject: {
         ...state.AllFiltersObject,
-        Tags: selectedOptions,
+        Tag: selectedOptions,
       },
     })),
 
-
   // remove items badegs
 
-  removeItem: (filterType) => set((state) => {
-    return {
-      filterType: [],
-      AllFiltersObject: {
-        ...state.AllFiltersObject,
-        [filterType]: [],
-      },
-
-    };
-  }),
+  removeItem: (filterType) =>
+    set((state) => {
+      return {
+        AllFiltersObject: {
+          ...state.AllFiltersObject,
+          [filterType]: [],
+        },
+      };
+    }),
 
   // Apply filter on click of apply button =========================
   applyFilters: () =>
     set((state) => ({
       filteredCandidates: state.candidates.filter((candidate) => {
         const {
-          selectedCities,
-          selectedStates,
-          selectedPinCode,
-          selectedCountry,
-          selectedSalary,
-          selectedCompanyName,
-          selectedJobPosition,
-          selectedTags,
+          AllFiltersObject,
         } = state;
         const cityMatch =
-          // selectedCities.length === 0 ||
-          selectedCities.includes(candidate.city);
+          AllFiltersObject.City.includes(candidate.city);
         const stateMatch =
-          // selectedStates.length === 0 ||
-          selectedStates.includes(candidate.state);
-        // const contactNameMatch = selectedContactName.length === 0 || selectedContactName.includes(candidate.contactname);
-        const pinCodeMatch =
-          // selectedPinCode.length === 0 ||
-          selectedPinCode.includes(candidate.pincode);
+          AllFiltersObject.State.includes(candidate.state);
+        // const contactMatch = AllFiltersObject.ContactName.includes(candidate.contactname);
+        const PincodeMatch =
+          AllFiltersObject.Pincode.includes(candidate.Pincode);
         const countryMatch =
-          // selectedCountry.length === 0 ||
-          selectedCountry.includes(candidate.country);
+          AllFiltersObject.Country.includes(candidate.country);
         const salaryMatch =
-          // selectedSalary.length === 0 ||
-          selectedSalary.includes(candidate.salary);
+          AllFiltersObject.Salary.includes(candidate.salary);
         const companyMatch =
-          // selectedCompanyName.length === 0 ||
-          selectedCompanyName.includes(candidate.company);
+          AllFiltersObject.Company.includes(candidate.company);
         const jobMatch =
-          // selectedJobPosition.length === 0 ||
-          selectedJobPosition.includes(candidate.position);
+          AllFiltersObject.JobPosition.includes(candidate.position);
         const tagMatch =
-          // selectedTags.length === 0 || 
-          selectedTags.includes(candidate.tag);
+          AllFiltersObject.Tag.includes(candidate.tag);
         return (
           cityMatch ||
           stateMatch ||
-          pinCodeMatch ||
+          PincodeMatch ||
           countryMatch ||
           salaryMatch ||
           companyMatch ||
-          jobMatch
+          jobMatch ||
+          tagMatch
         );
       }),
     })),
@@ -191,17 +154,6 @@ const useCandidateStore = create((set) => ({
         Industry: [],
         Tag: [],
       },
-    
-      selectedCities: [],
-      selectedStates: [],
-      // selectedContactName: [],
-      selectedPinCode: [],
-      selectedCountry: [],
-      selectedSalary: [],
-      selectedCompanyName: [],
-      selectedJobPosition: [],
-      selectedIndustry: [],
-      selectedTags: [],
     });
   },
 
@@ -217,7 +169,7 @@ const useCandidateStore = create((set) => ({
           candidate.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
           candidate.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
           candidate.mobile.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          candidate.pincode.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          candidate.Pincode.toLowerCase().includes(searchTerm.toLowerCase()) ||
           candidate.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
           candidate.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
           candidate.country.toLowerCase().includes(searchTerm.toLowerCase()) ||

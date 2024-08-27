@@ -30,7 +30,7 @@ const CustomDialogBtn = () => {
     <>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="h-10 rounded-xl">
+          <Button className="h-10 rounded-xl flex-shrink-0">
             <Image
               className="inline-block mr-3 flex-shrink-0"
               src="/download-icon.webp"

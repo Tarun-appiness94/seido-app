@@ -4,6 +4,8 @@ import React from 'react'
 import CustomSearchInput from './CustomSearchInput'
 import CustomAvatar from './CustomAvatar'
 import Image from 'next/image'
+import { Kanit } from 'next/font/google';
+const kanit = Kanit({ subsets: ['latin'], weight: ['400', '700'] });
 
 const Header = () => {
   return (
@@ -21,7 +23,7 @@ const Header = () => {
       </div>
     </div>
     <div className="flex gap-8 items-center md:justify-end">
-      <span className="text-[20px]">Good morning, Mukesh!</span>
+      <span className={kanit.className}><span className='text-xl'>Good morning, Mukesh!</span></span>
       <CustomAvatar
         src="/user-img.webp"
         alt="User Avatar"
