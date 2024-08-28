@@ -114,7 +114,7 @@ const useCandidateStore = create((set) => ({
           AllFiltersObject.State.includes(candidate.state);
         // const contactMatch = AllFiltersObject.ContactName.includes(candidate.contactname);
         const PincodeMatch =
-          AllFiltersObject.Pincode.includes(candidate.Pincode);
+          AllFiltersObject.Pincode.includes(candidate.pincode);
         const countryMatch =
           AllFiltersObject.Country.includes(candidate.country);
         const salaryMatch =
